@@ -49,7 +49,6 @@ public class HsqlDBBaseTestUtils {
   private PrintWriter logWriter = null;
 
 
-  private String MY_FULL_DATABASE_PATH = databaseBasicPath + "/" + databaseName;
   private Server hsqlServer;
   private int nextFreePortForTest = -1;
 
@@ -92,16 +91,17 @@ public class HsqlDBBaseTestUtils {
   }
 
   public void startServices() throws Exception {
+    final String myFullDatabasePath = databaseBasicPath + "/" + databaseName;
     nextFreePortForTest = new PortUtils().nextFreePortForTest();
     if (useFileBasedDatabase) { // if stored on disc
-      deleteDirectory(MY_FULL_DATABASE_PATH);
-      new File(MY_FULL_DATABASE_PATH).mkdirs();
+      deleteDirectory(myFullDatabasePath);
+      new File(myFullDatabasePath).mkdirs();
     } else {
       //memory only
     }
 
-    final String pathFile = "file:" + MY_FULL_DATABASE_PATH;
-    final String pathMemory = "mem:target/" + MY_FULL_DATABASE_PATH;
+    final String pathFile = "file:" + myFullDatabasePath;
+    final String pathMemory = "mem:target/" + myFullDatabasePath;
     final String url = "jdbc:hsqldb:hsql://127.0.0.1:" + nextFreePortForTest + "/" + databaseName;
 
     hsqlServer = new Server();

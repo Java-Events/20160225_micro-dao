@@ -16,18 +16,6 @@ package org.rapidpm.microdao;
  */
 public enum Constants {
 
-  USE_FILE_BASED_DB("use.filebased.db"),
-
-  USER_RO("user.ro"),
-  PASSWD_RO("passwd.ro"),
-
-  USER_RW("user.rw"),
-  PASSWD_RW("passwd.rw"),
-
-  USER_ADMIN("user.admin"),
-  PASSWD_ADMIN("passwd.admin"),
-
-
   POOL_NAME_READER("microDAO-Pool-RO"),
   POOL_NAME_WRITER("microDAO-Pool-RW"),
   POOL_NAME_ADMIN("microDAO-Pool-ADMIN");
