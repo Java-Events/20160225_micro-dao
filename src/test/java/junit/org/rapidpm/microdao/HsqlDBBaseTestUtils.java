@@ -35,6 +35,8 @@ import java.sql.Statement;
  */
 public class HsqlDBBaseTestUtils {
 
+  public static final String GENERIC_DATABASE_HSQLDB_PATH = "target/_data/database/hsqldb";
+
   private String databaseBasicPath;
   private Boolean useFileBasedDatabase;
   private String databaseName;
@@ -166,24 +168,27 @@ public class HsqlDBBaseTestUtils {
     JDBCConnectionPools.instance().shutdownPools();
     hsqlServer.shutdown();
     hsqlServer.stop();
-//    DI.clearReflectionModel();
   }
 
 
+
+
   //@Before
-  public void initSchema() {
-    // this files are expected, loading will be in side framework
+  public void initSchemaBaseSchema(Class clazz) {
+    System.out.println("initSchemaBaseSchema - clazz = " + clazz);
+    executeSqlScript(clazz.getResource("CLEAR_SCHEMA.sql").getPath());
+    executeSqlScript(clazz.getResource("CREATE_TARGET_DB.sql").getPath());
+    executeSqlScript(clazz.getResource("INSERT_BASIC_DATA.sql").getPath());
+  }
 
-    executeSqlScript(HsqlDBBaseTestUtils.class.getResource("CLEAR_SCHEMA.sql").getPath());
-    executeSqlScript(HsqlDBBaseTestUtils.class.getResource("CREATE_TARGET_DB.sql").getPath());
-    executeSqlScript(HsqlDBBaseTestUtils.class.getResource("INSERT_BASIC_DATA.sql").getPath());
-
-    final URL testSqlResource = getClass().getResource(getClass().getSimpleName() + ".sql");
+  public void initSchemaTestSchema(Class clazz) {
+    System.out.println("initSchemaTestSchema - clazz = " + clazz);
+    final URL testSqlResource = clazz.getResource(clazz.getSimpleName() + ".sql");
     if (testSqlResource != null) {
       String testSqlPath = testSqlResource.getPath();
       executeSqlScript(testSqlPath);
     } else {
-      System.out.println("No SQL for " + getClass().getSimpleName());
+      System.out.println("No SQL for " + clazz.getSimpleName());
     }
   }
 
@@ -205,7 +210,7 @@ public class HsqlDBBaseTestUtils {
 
 
   public static final class Builder {
-    private String databaseBasicPath = "_data/database/hsqldb";
+    private String databaseBasicPath = GENERIC_DATABASE_HSQLDB_PATH;
     private Boolean useFileBasedDatabase = Boolean.FALSE;
     private String databaseName = "MICRODAO_DB";
     private String dbUserROPasswd = "";

@@ -1,16 +1,14 @@
 package junit.org.rapidpm.microdao.model.dao.userdao.v001;
 
 import junit.org.rapidpm.microdao.BaseMicroDAOTest;
-import junit.org.rapidpm.microdao.HsqlDBBaseTestUtils;
-import org.junit.*;
-import org.rapidpm.ddi.DI;
+import org.junit.Assert;
+import org.junit.Test;
 import org.rapidpm.microdao.model.User;
 import org.rapidpm.microdao.model.dao.UserDAO;
 
 import javax.inject.Inject;
 import java.util.Optional;
 
-import static junit.org.rapidpm.microdao.BaseMicroDAOTest.hsqlDBBaseTestUtils;
 
 /**
  * Copyright (C) 2010 RapidPM
