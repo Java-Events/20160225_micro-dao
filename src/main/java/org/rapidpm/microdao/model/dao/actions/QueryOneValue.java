@@ -57,7 +57,7 @@ public interface QueryOneValue<T> {
   }
 
   default String dbPoolName() {
-    return Constants.DB_NAME.value();
+    return Constants.POOL_NAME_READER.value();
   }
 
 

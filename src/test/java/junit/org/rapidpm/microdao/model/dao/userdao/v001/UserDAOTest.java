@@ -1,17 +1,16 @@
 package junit.org.rapidpm.microdao.model.dao.userdao.v001;
 
-import junit.org.rapidpm.microdao.HsqlDBBaseTest;
-import org.junit.Assert;
-import org.junit.Test;
+import junit.org.rapidpm.microdao.BaseMicroDAOTest;
+import junit.org.rapidpm.microdao.HsqlDBBaseTestUtils;
+import org.junit.*;
+import org.rapidpm.ddi.DI;
 import org.rapidpm.microdao.model.User;
 import org.rapidpm.microdao.model.dao.UserDAO;
 
 import javax.inject.Inject;
-
 import java.util.Optional;
 
-import static org.junit.Assert.*;
-import static org.assertj.core.api.Assertions.*;
+import static junit.org.rapidpm.microdao.BaseMicroDAOTest.hsqlDBBaseTestUtils;
 
 /**
  * Copyright (C) 2010 RapidPM
@@ -27,10 +26,10 @@ import static org.assertj.core.api.Assertions.*;
  *
  * Created by RapidPM - Team on 25.02.16.
  */
-public class UserDAOTest extends HsqlDBBaseTest {
-
+public class UserDAOTest extends BaseMicroDAOTest {
 
   @Inject UserDAO userDAO;
+
 
   @Test
   public void writeUser() throws Exception {

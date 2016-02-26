@@ -12,27 +12,33 @@ package org.rapidpm.microdao;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Created by RapidPM - Team on 12.02.16.
+ * Created by RapidPM - Team on 26.02.16.
  */
 public enum Constants {
 
-  DB_NAME("MICRODAO_DB");
+  USE_FILE_BASED_DB("use.filebased.db"),
+
+  USER_RO("user.ro"),
+  PASSWD_RO("passwd.ro"),
+
+  USER_RW("user.rw"),
+  PASSWD_RW("passwd.rw"),
+
+  USER_ADMIN("user.admin"),
+  PASSWD_ADMIN("passwd.admin"),
 
 
-  private String value;
+  POOL_NAME_READER("microDAO-Pool-RO"),
+  POOL_NAME_WRITER("microDAO-Pool-RW"),
+  POOL_NAME_ADMIN("microDAO-Pool-ADMIN");
 
   Constants(final String value) {
     this.value = value;
   }
 
+  private String value;
+
   public String value() {
     return value;
-  }
-
-  @Override
-  public String toString() {
-    return "Constants{" +
-        "value='" + value + '\'' +
-        '}';
   }
 }

@@ -41,7 +41,7 @@ public interface Update {
   }
 
   default String dbPoolName() {
-    return Constants.DB_NAME.value();
+    return Constants.POOL_NAME_WRITER.value();
   }
 
 
